@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       pages: [
+        'login',
         'search',
         'rate-limit',
         'mac-table',

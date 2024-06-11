@@ -7,8 +7,10 @@ import PortTraffic from './components/PortTraffic.vue';
 // import History from './components/History.vue';
 import LostMonitor from './components/LostMonitor.vue';
 import ClientLimit from './components/ClientLimit.vue';
+import Login from "@/components/Login";
 
 const routes = [
+  { path: '/login', component: Login },
   { path: '/search', component: Search },
   { path: '/rate-limit', component: RateLimit },
   { path: '/mac-table', component: MacTable },

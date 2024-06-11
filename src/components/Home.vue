@@ -1,29 +1,23 @@
+<!-- src/components/Home.vue -->
 <template>
-  <div id="app">
-    <NavBar/>
-    <router-view/>
+  <div>
+    <h2>Welcome, {{ username }}!</h2>
+    <button @click="logout" class="btn btn-danger">Logout</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import NavBar from './components/NavBar.vue';
 
 export default {
-  name: 'App',
-  components: {
-    NavBar,
-  },
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Home',
+  props: ['username'],
   methods: {
-    handleLoginSuccess() {
-      this.isLoggedIn = true;
-      // You might want to fetch user info or other data here
-    },
     async logout() {
       try {
         await axios.post('http://127.0.0.1:8000/user/logout');
-        this.isLoggedIn = false;
-        this.username = '';
+        this.$router.push('/');
       } catch (error) {
         console.error('Logout error:', error);
       }
@@ -32,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   max-width: 800px;
   margin: 50px auto;
